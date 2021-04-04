@@ -1,0 +1,57 @@
+.drag {
+    -webkit-app-region: drag
+}
+.no-drag {
+    -webkit-app-region: no-drag
+}
+.frame-height {
+    height: 36px;
+}
+.my-bg1 {
+    background: #c19ce0;
+}
+.my-bg2 {
+    background: #9a9ae6;
+}
+.my-bg3 {
+    background: #f0877f;
+}
+.my-bg4 {
+    background: #ff6c6c;
+}
+.my-bg5 {
+    background: #8fa7f8;
+}
+.my-bg6 {
+    background: #6393ce;
+}
+.my-bg7 {
+    background: #ffa0d2;
+}
+.my-bg8 {
+    background: #ff7379;
+}
+.my-bg9 {
+    background: #2bc7db;
+}
+.my-bg10 {
+    background: #2dc68e;
+}
+.my-bg11 {
+    background: #7fe3e3;
+}
+.my-bg12 {
+    background: #5bb65e;
+}
+.my-bg13 {
+    background: linear-gradient(to right, #f8f9fa, #f8d7da);
+}
+.my-bg14 {
+    background: linear-gradient(to right, #f8f9fa, #e6dbb9);
+}
+.my-bg15 {
+    background: linear-gradient(to right, #f8f9fa, #d1e7dd);
+}
+.cursor-pointer {
+    cursor: pointer;
+}
