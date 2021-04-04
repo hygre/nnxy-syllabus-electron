@@ -1,4 +1,4 @@
-import {ipcRenderer} from 'electron'
+import {ipcRenderer, shell} from 'electron'
 import axios from 'axios'
 import dateFormat from 'dateformat'
 
@@ -20,6 +20,7 @@ let actions = {
 updateUserData()
 
 window.ipcRenderer = ipcRenderer
+window.shell = shell
 window.api = actions
 
 

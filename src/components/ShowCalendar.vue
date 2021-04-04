@@ -5,7 +5,7 @@
     <div class="d-flex align-items-center frame-height drag">
       <span class="badge rounded-pill my-bg6 ms-2 no-drag">一览</span>
       <span class="badge rounded-pill my-bg5 ms-2 no-drag">南院天气</span>
-      <span class="badge rounded-pill my-bg8 ms-2 no-drag">{{ weatherData.text }}</span>
+      <span class="badge rounded-pill my-bg3 ms-2 no-drag">{{ weatherData.text }}</span>
       <span class="badge rounded-pill my-bg9 ms-2 no-drag">{{ weatherData.temp }}℃</span>
       <span class="badge rounded-pill my-bg10 ms-2 no-drag">{{ weatherData.windDir }}</span>
     </div>
@@ -70,12 +70,12 @@ export default {
             let curDay = new Date().getDay() === 0 ? 7 : new Date().getDay()
             let nextDay = (curDay + 1) % 7
             this.day = curDay
+            this.curWeek = window.currentTime.zc
             this.curDayCurse = r.filter(v => v.kcsj[0] === curDay.toString())
             if (curDay === 7) {
               window.api
                   .getKbcxAzc(window.currentTime.zc + 1)
                   .then(res => {
-                    this.curWeek = window.currentTime.zc
                     this.nextDayCurse = res.filter(v => v.kcsj[0] === nextDay.toString())
                   })
             } else this.nextDayCurse = r.filter(v => v.kcsj[0] === nextDay.toString())

@@ -25,7 +25,8 @@
         </div>
 
         <div class="mt-auto">
-          <span @click="loginOut" class="badge rounded-pill my-bg8 ms-2 cursor-pointer no-drag">🚪 登出</span>
+          <span @click="help" class="badge rounded-pill my-bg8 ms-2 cursor-pointer no-drag">💬 反馈</span>
+          <span @click="loginOut" class="badge rounded-pill my-bg1 ms-2 cursor-pointer no-drag">🚪 登出</span>
         </div>
 
       </div>
@@ -66,6 +67,9 @@ export default {
     },
     openDevTools() {
       window.ipcRenderer.send('openDevTools')
+    },
+    help() {
+      window.shell.openExternal('http://wpa.qq.com/msgrd?v=3&uin=1969735685')
     }
   }
 }
