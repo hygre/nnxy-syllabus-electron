@@ -52,7 +52,7 @@ export default {
     return {
       weekList: ['天', '一', '二', '三', '四', '五', '六'],
       day: 0,
-      curWeek: window.currentTime.zc,
+      curWeek: 0,
       curDayCurse: [],
       nextDayCurse: [],
       weatherData: []
@@ -75,6 +75,7 @@ export default {
               window.api
                   .getKbcxAzc(window.currentTime.zc + 1)
                   .then(res => {
+                    this.curWeek = window.currentTime.zc
                     this.nextDayCurse = res.filter(v => v.kcsj[0] === nextDay.toString())
                   })
             } else this.nextDayCurse = r.filter(v => v.kcsj[0] === nextDay.toString())

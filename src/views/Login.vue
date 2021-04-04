@@ -8,8 +8,8 @@
         <div class="d-grid mx-auto mt-3">
           <span class="navbar-brand text-black-50 text-center w-100">南院课表</span>
         </div>
-        <input @keydown.enter="login" v-model="xh" type="text" class="form-control mt-3 bg-transparent" placeholder="学号">
-        <input @keydown.enter="login" v-model="pwd" type="password" class="form-control mt-3 bg-transparent" placeholder="密码">
+        <input @keydown.enter="login" v-model="xh" type="text" class="form-control mt-3 bg-transparent text-black-50" placeholder="学号">
+        <input @keydown.enter="login" v-model="pwd" type="password" class="form-control mt-3 bg-transparent text-black-50" placeholder="密码">
         <div class="d-grid mx-auto mt-3">
           <button @click="login" class="btn btn-light text-black-50" type="button">登录</button>
         </div>

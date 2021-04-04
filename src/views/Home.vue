@@ -63,6 +63,9 @@ export default {
     loginOut() {
       localStorage.removeItem('userData')
       this.$router.push({name: 'Login'})
+    },
+    openDevTools() {
+      window.ipcRenderer.send('openDevTools')
     }
   }
 }
@@ -80,7 +83,7 @@ export default {
 .slide-fade-enter-from,
 .slide-fade-leave-to {
   transform: translateX(20px);
-  opacity: 0;
+  opacity: 0.5;
 }
 
 /** {*/
