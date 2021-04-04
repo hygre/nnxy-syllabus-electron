@@ -15,12 +15,12 @@
       <div class="col ms-2">
         <div>
           <h1 class="text-black-50"><strong>Today</strong></h1>
-          <h5 v-if="!curDayCurse[0]" class="text-black-50 mt-3"><strong>今天没课，快去图书馆自习吧 😸</strong></h5>
+          <h5 v-if="!curDayCurse[0]" class="text-black-50 mt-3"><strong>今天没课，快去图书馆自习吧! 😸</strong></h5>
           <h4 v-for="v in curDayCurse" :key="v.kcsj" class="text-black-50 mt-3"><strong>{{v.kssj + '-' +v.jssj + " " + v.kcmc }}</strong></h4>
         </div>
         <div class="mt-5">
           <h1 class="text-black-50"><strong>Tomorrow</strong></h1>
-          <h5 v-if="!nextDayCurse[0]" class="text-black-50"><strong>明天没课，快去图书馆自习吧</strong></h5>
+          <h5 v-if="!nextDayCurse[0]" class="text-black-50"><strong>明天没课，考虑跟小伙伴们到处去逛逛? 😹</strong></h5>
           <h4 v-for="v in nextDayCurse" :key="v.kcsj" class="text-black-50 mt-3"><strong>{{v.kssj + '-' +v.jssj + " " + v.kcmc }}</strong></h4>
         </div>
       </div>
