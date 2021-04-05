@@ -10,13 +10,14 @@
         <div class="d-grid mx-auto mt-3">
           <span class="navbar-brand text-black-50 text-center w-100">南院课表</span>
         </div>
-        <input @keydown.enter="login" v-model="xh" type="text" class="form-control mt-3 bg-transparent text-black-50"
+        <input @keydown.enter="login" @focusin="tip = ''" v-model="xh" type="text" class="form-control mt-3 bg-transparent text-black-50"
                placeholder="学号">
-        <input @keydown.enter="login" v-model="pwd" type="password"
+        <input @keydown.enter="login" @focusin="tip = ''" v-model="pwd" type="password"
                class="form-control mt-3 bg-transparent text-black-50" placeholder="密码">
         <div class="d-grid mx-auto mt-3">
           <button @click="login" class="btn btn-light text-black-50" type="button">登录</button>
         </div>
+        <p class="text-center text-black-50 pt-2"><strong>{{tip}}</strong></p>
       </div>
 
     </div>
@@ -36,7 +37,8 @@ export default {
   data() {
     return {
       xh: '',
-      pwd: ''
+      pwd: '',
+      tip: ''
     }
   },
   methods: {
@@ -51,7 +53,7 @@ export default {
                   .then(() => {
                     this.$router.push({path: '/'})
                   })
-            }
+            } else this.tip = '学号或密码错误'
           })
     }
   }

@@ -8,7 +8,13 @@ module.exports = {
                 "productName":"南院课表",
                 "appId": "lmc.electron.syllabus",
                 "icon": "src/assets/application.png",
-                "copyright":"Copyright © 2021 linmaochun"
+                "copyright":"Copyright © 2021 linmaochun",
+                "nsis": {
+                    "oneClick": false,
+                    "perMachine": false,
+                    "allowElevation": true,
+                    "allowToChangeInstallationDirectory": true
+                }
             },
         }
     }

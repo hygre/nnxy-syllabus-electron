@@ -60,6 +60,9 @@ async function createWindow() {
     })
 }
 
+app.disableHardwareAcceleration()
+app.releaseSingleInstanceLock()
+
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
     // On macOS it is common for applications and their menu bar
@@ -74,8 +77,6 @@ app.on('activate', () => {
     // dock icon is clicked and there are no other windows open.
     if (BrowserWindow.getAllWindows().length === 0) createWindow()
 })
-
-app.disableHardwareAcceleration()
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
