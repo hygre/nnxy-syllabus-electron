@@ -12,15 +12,17 @@ protocol.registerSchemesAsPrivileged([
     {scheme: 'app', privileges: {secure: true, standard: true}}
 ])
 
+let win
+
 async function createWindow() {
     // Create the browser window.
-    const win = new BrowserWindow({
+    win = new BrowserWindow({
         width: 960,
         height: 540,
-        minWidth:960,
-        minHeight:540,
+        minWidth: 960,
+        minHeight: 540,
         frame: false,
-        show:false,
+        show: false,
         backgroundColor: '#ffffff',
         webPreferences: {
             // Use pluginOptions.nodeIntegration, leave this alone
@@ -45,23 +47,36 @@ async function createWindow() {
     win.once('ready-to-show', () => {
         win.show()
     })
-
-    ipcMain.on('window:minimize', () => {
-        win.minimize()
-    })
-    ipcMain.on('window:maximize', () => {
-        win.isMaximized() ? win.unmaximize() : win.maximize()
-    })
-    ipcMain.on("window:close", () => {
-        win.close()
-    })
-    ipcMain.on("openDevTools", () => {
-        win.webContents.openDevTools()
-    })
 }
 
+ipcMain.on('window:minimize', () => {
+    win.minimize()
+})
+ipcMain.on('window:maximize', () => {
+    win.isMaximized() ? win.unmaximize() : win.maximize()
+})
+ipcMain.on("window:close", () => {
+    win.close()
+})
+ipcMain.on("openDevTools", () => {
+    win.webContents.openDevTools()
+})
+
 app.disableHardwareAcceleration()
-app.releaseSingleInstanceLock()
+
+const gotTheLock = app.requestSingleInstanceLock()
+
+if (!gotTheLock) {
+    app.quit()
+} else {
+    app.on('second-instance', () => {
+        // 当运行第二个实例时,将会聚焦到win这个窗口
+        if (win) {
+            if (win.isMinimized()) win.restore()
+            win.focus()
+        }
+    })
+}
 
 // Quit when all windows are closed.
 app.on('window-all-closed', () => {
