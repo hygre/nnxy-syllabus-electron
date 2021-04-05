@@ -43,7 +43,7 @@ export default {
             if (r.success) {
               localStorage.setItem('userData', JSON.stringify(r))
               window.api.updateUserData()
-              this.$router.push({ name: 'Home' })
+              this.$router.push({ name: 'ShowCalendar' })
             }
           })
     }

@@ -20,6 +20,8 @@ async function createWindow() {
         minWidth:960,
         minHeight:540,
         frame: false,
+        show:false,
+        backgroundColor: '#ffffff',
         webPreferences: {
             // Use pluginOptions.nodeIntegration, leave this alone
             // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -39,6 +41,10 @@ async function createWindow() {
         // Load the index.html when not in development
         win.loadURL('app://./index.html')
     }
+
+    win.once('ready-to-show', () => {
+        win.show()
+    })
 
     ipcMain.on('window:minimize', () => {
         win.minimize()

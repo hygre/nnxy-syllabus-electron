@@ -57,9 +57,6 @@ export default {
       userData: JSON.parse(localStorage.getItem('userData'))
     }
   },
-  mounted() {
-    this.$router.push({name: 'ShowCalendar'})
-  },
   methods: {
     loginOut() {
       localStorage.removeItem('userData')
