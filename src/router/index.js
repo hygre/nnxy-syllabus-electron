@@ -40,9 +40,16 @@ const router = createRouter({
     routes
 })
 
+let mutex = 1
 router.beforeEach((to, from, next) => {
     if (to.name !== 'Login' && !localStorage.getItem('userData')) next({name: 'Login'})
-    else next()
+    else if (mutex === 1) {
+        window.api.updateUserData().then(r => {
+            console.log(r)
+            mutex = 0
+            next()
+        })
+    } else next()
 })
 
 export default router

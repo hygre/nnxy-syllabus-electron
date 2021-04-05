@@ -72,6 +72,7 @@ export default {
             this.day = curDay
             this.curWeek = window.currentTime.zc
             this.curDayCurse = r.filter(v => v.kcsj[0] === curDay.toString())
+            console.log('hello')
             if (curDay === 7) {
               window.api
                   .getKbcxAzc(window.currentTime.zc + 1)

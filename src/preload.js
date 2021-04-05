@@ -2,7 +2,7 @@ import {ipcRenderer, shell} from 'electron'
 import axios from 'axios'
 import dateFormat from 'dateformat'
 
-const API = "http://jw.nnxy.cn/app.do?";
+const API = "http://jw.nnxy.cn/app.do?"
 const WeatherUrl = "https://devapi.qweather.com/v7/weather/now?"
 let userData = ''
 let currentTime = ''
@@ -16,8 +16,6 @@ let actions = {
     updateUserData,
     updateWeatherData
 }
-
-updateUserData()
 
 window.ipcRenderer = ipcRenderer
 window.shell = shell
@@ -85,7 +83,7 @@ function getCjcx(xnxqid = currentTime.xnxqh, token = userData.token, xh = userDa
     });
 }
 
-function updateUserData() {
+async function updateUserData() {
 
     const localUserData = JSON.parse(localStorage.getItem('userData'))
 
@@ -94,18 +92,21 @@ function updateUserData() {
         const xh = localUserData.user.useraccount
         const pwd = localUserData.user.userpasswd
 
-        getAuthUser(xh, pwd)
+        return await getAuthUser(xh, pwd)
             .then(res => {
-
                 localStorage.setItem('userData', JSON.stringify(res))
                 userData = JSON.parse(localStorage.getItem('userData'))
+                window.userData = userData
                 admission = parseInt(userData.user.useraccount.substr(0, 4), 10)
-
-                getCurrentTime().then(r => {
+                window.admission = admission
+                return 'updated userData'
+            })
+            .then(async (r) => {
+                console.log(r)
+                return await getCurrentTime().then(r => {
                     currentTime = r
-                    window.userData = userData
                     window.currentTime = currentTime
-                    window.admission = admission
+                    return 'updated currentTime'
                 })
             })
     }
@@ -113,9 +114,9 @@ function updateUserData() {
 
 function updateWeatherData() {
     return getWeatherData({
-            params: {
-                key: 'af4b03230c4248818b63c1f27f7ad0a5',
-                location: '101300103'
-            }
-        })
+        params: {
+            key: 'af4b03230c4248818b63c1f27f7ad0a5',
+            location: '101300103'
+        }
+    })
 }
