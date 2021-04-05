@@ -143,7 +143,4 @@ export default {
 .tb-height{
   height: 78px;
 }
-.fs-sm{
-  font-size: 10px;
-}
 </style>
